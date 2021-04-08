@@ -138,13 +138,14 @@ public class FetchingEmbeddedListTest extends BaseTest {
     private static class DepartmentManagerDtoResultTransformer implements ResultTransformer {
 
         private final Map<Long, List<ManagerDto>> departmentIdManagersMap = new HashMap<>();
+        private final List<DepartmentManagerDto> rootList = new ArrayList<>();
 
         @Override
         public Object transformTuple(Object[] objects, String[] strings) {
 
             Long departmentId = (Long) objects[0];
             ManagerDto managerDto = createManagerDto(objects);
-            DepartmentManagerDto departmentManagerDto = createDepartmentManagerDto(objects);
+            DepartmentManagerDto root = createDepartmentManagerDto(objects);
 
             if (!departmentIdManagersMap.containsKey(departmentId)) {
 
@@ -152,20 +153,21 @@ public class FetchingEmbeddedListTest extends BaseTest {
                 managerDtoList.add(managerDto);
 
                 departmentIdManagersMap.put(departmentId, managerDtoList);
+                rootList.add(root);
             }
 
             departmentIdManagersMap.get(departmentId).add(managerDto);
 
-            return departmentManagerDto;
+            return root;
         }
 
         @Override
         public List<DepartmentManagerDto> transformList(List list) {
-            for (Object object : list) {
-                DepartmentManagerDto dto = (DepartmentManagerDto) object;
+            for (DepartmentManagerDto dto : rootList) {
                 dto.setManagerDtoList(departmentIdManagersMap.get(dto.getId()));
             }
-            return list;
+
+            return rootList;
         }
 
         private ManagerDto createManagerDto(Object[] objects) {
