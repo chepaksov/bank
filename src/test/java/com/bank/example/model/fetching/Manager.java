@@ -1,10 +1,10 @@
 package com.bank.example.model.fetching;
 
 import com.bank.example.model.Department;
-import jdk.nashorn.internal.ir.annotations.Immutable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Immutable;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

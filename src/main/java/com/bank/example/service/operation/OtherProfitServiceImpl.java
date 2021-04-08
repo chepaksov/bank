@@ -4,7 +4,6 @@ import com.bank.example.dao.operation.OtherProfitDao;
 import com.bank.example.dto.OtherProfitDto;
 import com.bank.example.model.operation.OtherProfit;
 import com.bank.example.service.AbstractService;
-import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
