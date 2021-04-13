@@ -137,7 +137,7 @@ public class CascadeTest extends BaseTest {
         em.flush();
 
         com.bank.example.model.cascade.CashBackCategory category = em.find(com.bank.example.model.cascade.CashBackCategory.class, 1L);
-//        em.remove(category);
+        em.remove(category);
     }
 
 
