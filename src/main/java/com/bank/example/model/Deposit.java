@@ -37,7 +37,7 @@ public class Deposit {
 
     private Double sum;
 
-    @OneToMany(mappedBy = "deposit")
+    @OneToMany(mappedBy = "deposit", cascade = CascadeType.REMOVE)
     private List<Interests> interests;
 
     public Account getAccount() {
