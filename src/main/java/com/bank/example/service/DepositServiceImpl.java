@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,7 @@ public class DepositServiceImpl extends AbstractService<Long, Deposit> implement
         List<Account> accountList = accountService.getAccountsByIds(accountIds);
 
         for (Account account : accountList) {
-            List<Deposit> depositList = account.getDeposits();
+            List<Deposit> depositList = new ArrayList<>(account.getDeposits());
             Card card = cardService.getDefaultCardByAccountId(account.getId());
 
             for (Deposit deposit : depositList) {
