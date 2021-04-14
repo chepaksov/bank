@@ -29,7 +29,7 @@ public class FetchingNativeTest extends BaseTest {
 
             long start = System.nanoTime();
             em.createNativeQuery(
-                    "SELECT m.id, m.phone, m.passport_number, m.department_id FROM manager m",
+                    "SELECT m.id, m.phone, m.passport_number, m.department_id, m.event_id FROM manager m",
                     Manager.class
             )
                     .getResultList();
@@ -49,7 +49,7 @@ public class FetchingNativeTest extends BaseTest {
 
             long start = System.nanoTime();
             em.createNativeQuery(
-                    "SELECT m.id, m.phone, m.passport_number, m.department_id FROM manager m",
+                    "SELECT m.id, m.phone, m.passport_number, m.department_id, m.event_id FROM manager m",
                     com.bank.example.model.fetching.Manager.class
             )
                     .getResultList();
@@ -69,7 +69,7 @@ public class FetchingNativeTest extends BaseTest {
 
             long start = System.nanoTime();
             em.createNativeQuery(
-                    "SELECT m.id, m.phone, m.passport_number, m.department_id FROM manager m",
+                    "SELECT m.id, m.phone, m.passport_number, m.department_id, m.event_id FROM manager m",
                     Manager.class
             )
                     .setHint(QueryHints.READ_ONLY, true)
