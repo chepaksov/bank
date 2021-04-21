@@ -4,6 +4,7 @@ import com.bank.example.converter.ReflectionDtoConverter;
 import com.bank.example.dto.reflection.ReflectionEntityDto;
 import com.bank.example.model.DocumentScans;
 import com.bank.example.service.DocumentScansService;
+import com.bank.example.util.ClassUtil;
 import com.bank.example.util.TransactionHolder;
 import com.bank.example.util.dto.transaction.AtmTransactionUtilDto;
 import com.bank.example.util.dto.transaction.OtherProfitUtilDto;
@@ -45,12 +46,10 @@ public class UtilController {
 
         ReflectionEntityDto dto = null;
         try {
-            dto = ReflectionDtoConverter.getReflectionEntityDto(Class.forName("com.bank.example.model." +className));
+            dto = ReflectionDtoConverter.getReflectionEntityDto(ClassUtil.getModelClassByName(className));
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return ResponseEntity.ok(dto);

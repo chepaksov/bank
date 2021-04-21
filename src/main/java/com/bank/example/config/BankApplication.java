@@ -27,15 +27,4 @@ public class BankApplication {
         return new ModelMapper();
     }
 
-//    @Bean
-//    @Autowired
-//    public DataSource dataSource(PGSimpleDataSource dataSource) {
-//        return DataSourceBuilder
-//                .create()
-//                .username("")
-//                .password("")
-//                .url("")
-//                .driverClassName("")
-//                .build();
-//    }
 }
