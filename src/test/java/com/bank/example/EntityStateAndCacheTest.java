@@ -123,6 +123,7 @@ class EntityStateAndCacheTest extends BaseTest {
     @Commit
     void exercise1_1() {
         Tariff tariff = createTariff();
+        tariffService.persist(tariff);
     }
 
     @Test
@@ -130,13 +131,16 @@ class EntityStateAndCacheTest extends BaseTest {
     void exercise1_2() {
         Tariff tariff = persistTariffAndReturn();
         em.detach(tariff);
+
         tariff.setName("Actual name");
+        em.merge(tariff);
     }
 
     @Test
     @Commit
     void exercise1_3() {
         Tariff tariff = persistTariffAndReturn();
+        em.remove(tariff);
     }
 
     @Test
