@@ -223,9 +223,9 @@ class EntityStateAndCacheTest extends BaseTest {
     void exercise2_1() {
         Tariff tariff = persistTariffAndReturn();
         tariff.setName("Second name");
-        em.flush();
+      //  em.flush();
         tariff.setName("Third name");
-        em.flush();
+       // em.flush();
         tariff.setName("Last name");
     }
 
@@ -233,6 +233,7 @@ class EntityStateAndCacheTest extends BaseTest {
     @Commit
     void exercise2_2() {
         Tariff tariff = persistTariffAndReturn();
+        em.detach(tariff);
         em.find(Tariff.class, tariff.getId());
     }
 
@@ -240,11 +241,11 @@ class EntityStateAndCacheTest extends BaseTest {
     @Commit
     void exercise2_3() {
         Tariff tariff = persistTariffAndReturn();
-        em.detach(tariff);
+      //  em.detach(tariff);
         tariff = em.find(Tariff.class, tariff.getId());
-        em.clear();
+      //  em.clear();
         tariff = em.find(Tariff.class, tariff.getId());
-        em.detach(tariff);
+     //   em.detach(tariff);
         em.find(Tariff.class, tariff.getId());
     }
 
