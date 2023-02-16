@@ -342,9 +342,9 @@ class EntityStateAndCacheTest extends BaseTest {
 
         tariff = em.find(Tariff.class, id);
 
-        tariff = (Tariff) em.createNativeQuery("SELECT * FROM tariff WHERE id=:id", Tariff.class).setParameter("id", id).getSingleResult();
+        tariff = em.find(Tariff.class, id);
 
-        tariff = em.createQuery("from Tariff t where t.id=:id", Tariff.class).setParameter("id", id).getSingleResult();
+        tariff = em.find(Tariff.class, id);
     }
 
     @Test

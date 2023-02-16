@@ -1,0 +1,36 @@
+###
+POST http://localhost:8080/api/manager/tariff/persistAll
+Content-Type: application/json
+
+[
+  {
+    "name": "Первый"
+},
+  {
+    "name": "Второй"
+},
+  {
+    "name": "Третий"
+},
+  {
+    "name": "Четвертый"
+},
+  {
+    "name": "Пятый"
+},
+  {
+    "name": "Шестой"
+},
+  {
+    "name": "Седьмой"
+},
+  {
+    "name": "Восьмой"
+},
+  {
+    "name": "Девятый"
+},
+  {
+    "name": "Десятый"
+  }
+]
