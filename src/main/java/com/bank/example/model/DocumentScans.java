@@ -17,7 +17,8 @@ import java.util.Objects;
 public class DocumentScans {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "documentScans_generator")
+    @SequenceGenerator(sequenceName = "documentScans_sequence", name = "documentScans_generator", allocationSize = 10)
     private Long id;
 
     private String passport;

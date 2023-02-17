@@ -3,15 +3,9 @@ package com.bank.example.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import javax.persistence.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 import java.util.Objects;
 
 @Entity
@@ -21,7 +15,8 @@ import java.util.Objects;
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "card_generator")
+    @SequenceGenerator(sequenceName = "card_sequence", name = "card_generator", allocationSize = 10)
     private Long id;
 
     private String PIN;

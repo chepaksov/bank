@@ -16,8 +16,8 @@ import java.util.Objects;
 public class Tariff {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tariff_sequence")
-    @SequenceGenerator(sequenceName = "tariff_sequence", name = "tariff_generator", allocationSize = 999)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tariff_generator")
+    @SequenceGenerator(sequenceName = "tariff_sequence", name = "tariff_generator", allocationSize = 10)
     private Long id;
 
     private String name;

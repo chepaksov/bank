@@ -17,7 +17,8 @@ import java.util.Objects;
 public class Settings {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "settings_generator")
+    @SequenceGenerator(sequenceName = "settings_sequence", name = "settings_generator", allocationSize = 10)
     private Long id;
 
     private Boolean isNotificationAllowed = true;

@@ -3,11 +3,7 @@ package com.bank.example.model.operation;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -17,7 +13,8 @@ import java.util.Objects;
 public class Atm {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atm_generator")
+    @SequenceGenerator(sequenceName = "atm_sequence", name = "atm_generator", allocationSize = 10)
     private Long id;
 
     private Double latitude;

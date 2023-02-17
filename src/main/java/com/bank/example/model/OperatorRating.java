@@ -4,15 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -21,7 +13,8 @@ import java.util.Objects;
 public class OperatorRating {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "operatorRating_generator")
+    @SequenceGenerator(sequenceName = "operatorRating_sequence", name = "operatorRating_generator", allocationSize = 10)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

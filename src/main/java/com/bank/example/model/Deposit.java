@@ -7,12 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +21,8 @@ import java.util.Objects;
 public class Deposit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "deposit_generator")
+    @SequenceGenerator(sequenceName = "deposit_sequence", name = "deposit_generator", allocationSize = 10)
     private Long id;
 
     private LocalDate openDate;

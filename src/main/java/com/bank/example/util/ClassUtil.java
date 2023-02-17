@@ -25,7 +25,14 @@ public class ClassUtil {
         int pathLength = path.getNameCount();
 
         String fileName = path.subpath(3, pathLength).toString();
-        fileName = fileName.replaceAll("/", ".");
+
+        if (fileName.contains("/")) {
+            fileName = fileName.replaceAll("/", ".");
+        }
+        else {
+            fileName = fileName.replaceAll("\\\\", ".");
+        }
+
         fileName = fileName.substring(0, fileName.lastIndexOf('.'));
 
         System.out.println(path);

@@ -15,7 +15,8 @@ import java.util.Objects;
 public class CloseRequest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "closeRequest_generator")
+    @SequenceGenerator(sequenceName = "closeRequest_sequence", name = "closeRequest_generator", allocationSize = 10)
     private Long id;
 
     private String cause;
