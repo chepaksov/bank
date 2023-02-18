@@ -38,7 +38,7 @@ public class Account {
     @ManyToMany
     private List<CashBackCompany> cashBackCompanies = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "account")
     private List<Deposit> deposits = new ArrayList<>();
 
     public Account() {

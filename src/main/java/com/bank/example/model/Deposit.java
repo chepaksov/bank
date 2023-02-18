@@ -31,18 +31,21 @@ public class Deposit {
 
     private Float rate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Account account;
+
     private Double sum;
 
     @OneToMany(mappedBy = "deposit", cascade = CascadeType.REMOVE)
     private List<Interests> interests;
 
-    public Account getAccount() {
-        return null;
-    }
+//    public Account getAccount() {
+//        return null;
+//    }
 
-    public void setAccount(Account account) {
-
-    }
+//    public void setAccount(Account account) {
+//
+//    }
 
     @Override
     public boolean equals(Object o) {

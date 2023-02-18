@@ -5,6 +5,8 @@ import com.bank.example.model.Card;
 import com.bank.example.model.Deposit;
 import com.bank.example.service.AccountService;
 import com.bank.example.service.CardService;
+import com.bank.example.sqltracker.AssertSqlCount;
+import com.bank.example.sqltracker.QueryCountInfoHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,16 +29,22 @@ public class CardAccountRestController {
 
     @PostMapping
     public ResponseEntity<Void> createDeposit(@RequestBody Card card, @PathVariable Long accountId) {
+        System.out.println("создание");
+        AssertSqlCount.reset();
         Account account = accountService.getByKey(accountId);
         card.setAccount(account);
         cardService.persist(card);
+        System.out.println(QueryCountInfoHolder.getReport());
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{cardId}")
     public ResponseEntity<Void> deleteDeposit(@PathVariable Long cardId) {
+        System.out.println("удаление");
+        AssertSqlCount.reset();
         Card card = cardService.getByKey(cardId);
         cardService.remove(card);
+        System.out.println(QueryCountInfoHolder.getReport());
         return ResponseEntity.ok().build();
     }
 }

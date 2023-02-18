@@ -1,6 +1,5 @@
 package com.bank.example.service;
 
-import com.bank.example.dao.GenericDao;
 import com.bank.example.dao.OperatorRatingDao;
 import com.bank.example.model.OperatorRating;
 import org.springframework.stereotype.Service;
