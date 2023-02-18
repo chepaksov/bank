@@ -17,8 +17,8 @@ import java.util.Objects;
 public class DocumentScans {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "documentScans_generator")
-    @SequenceGenerator(sequenceName = "documentScans_sequence", name = "documentScans_generator", allocationSize = 10)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "documentScans_generator")
+//    @SequenceGenerator(sequenceName = "documentScans_sequence", name = "documentScans_generator", allocationSize = 10)
     private Long id;
 
     private String passport;
@@ -27,7 +27,9 @@ public class DocumentScans {
 
     private String insuranceNumber;
 
+    @MapsId
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(unique = true)
     private Account account;
 
     public DocumentScans() {

@@ -23,9 +23,15 @@ public class AccountRestController {
 
     private final ModelMapper modelMapper;
 
-    public AccountRestController(AccountService accountService, ModelMapper modelMapper) {
+    private final SettingsService settingsService;
+
+    private final DocumentScansService documentScansService;
+
+    public AccountRestController(AccountService accountService, ModelMapper modelMapper, SettingsService settingsService, DocumentScansService documentScansService) {
         this.accountService = accountService;
         this.modelMapper = modelMapper;
+        this.settingsService = settingsService;
+        this.documentScansService = documentScansService;
     }
 
     @GetMapping("/{accountId}")
@@ -44,8 +50,8 @@ public class AccountRestController {
     @GetMapping("/{accountId}/withSettingsAndScans")
     public ResponseEntity<AccountSettingsScansDto> getAccountSettingsScansDto(@PathVariable Long accountId) {
         Account account = accountService.getByKey(accountId);
-        Settings settings = account.getSettings();
-        DocumentScans documentScans = account.getDocumentScans();
+        Settings settings = settingsService.getByKey(account.getId());
+        DocumentScans documentScans = documentScansService.getByKey(account.getId());
         AccountSettingsScansDto dto = AccountSettingsScansDtoConverter.convertToDto(account, settings, documentScans);
         return ResponseEntity.ok(dto);
     }

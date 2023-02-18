@@ -1,5 +1,7 @@
 package com.bank.example.model;
 
+import com.bank.example.dto.DocumentScansDto;
+import com.bank.example.dto.SettingsDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,12 +31,6 @@ public class Account {
     @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "tariff_id")
     private Tariff tariff;
-
-    @OneToOne(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Settings settings;
-
-    @OneToOne(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private DocumentScans documentScans;
 
     @ManyToMany
     private List<CashBackCategory> cashBackCategories = new ArrayList<>();

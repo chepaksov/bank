@@ -1,6 +1,8 @@
 package com.bank.example.converter;
 
 import com.bank.example.dto.AccountSettingsScansDto;
+import com.bank.example.dto.DocumentScansDto;
+import com.bank.example.dto.SettingsDto;
 import com.bank.example.model.Account;
 import com.bank.example.model.DocumentScans;
 import com.bank.example.model.Settings;
