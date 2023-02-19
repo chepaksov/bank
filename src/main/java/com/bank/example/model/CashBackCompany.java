@@ -6,10 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -30,7 +28,7 @@ public class CashBackCompany {
     @ManyToOne(fetch = FetchType.LAZY)
     private Manager editor;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "cashBackCompanies")
     private List<Account> accounts = new ArrayList<>();
 
     @ManyToMany

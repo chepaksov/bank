@@ -28,10 +28,10 @@ public class CashBackCategory {
     @ManyToOne(fetch = FetchType.LAZY)
     private Manager editor;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "cashBackCategories")
     private List<Account> accounts = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "cashBackCategories")
     private List<CashBackCompany> cashBackCompanies = new ArrayList<>();
 
     public void addAccount(Account account) {
