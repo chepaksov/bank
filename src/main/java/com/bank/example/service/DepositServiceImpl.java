@@ -44,7 +44,7 @@ public class DepositServiceImpl extends AbstractService<Long, Deposit> implement
                     card.addSum(deposit.getSum());
                     deposit.getInterests().forEach(i -> i.setDeposit(null));
                     account.getDeposits().remove(deposit);
-                    depositDao.remove(deposit);
+                  //  depositDao.remove(deposit);
                 }
             }
 

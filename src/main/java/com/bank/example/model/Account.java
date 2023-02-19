@@ -38,7 +38,7 @@ public class Account {
     @ManyToMany
     private List<CashBackCompany> cashBackCompanies = new ArrayList<>();
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", orphanRemoval = true, cascade=CascadeType.ALL)
     private List<Deposit> deposits = new ArrayList<>();
 
     public Account() {
@@ -60,7 +60,10 @@ public class Account {
     }
 
     public void setDeposits(List<Deposit> deposits) {
-        this.deposits = deposits;
+        this.deposits.clear();
+        if (deposits != null && !deposits.isEmpty()) {
+            this.deposits.addAll(deposits);
+        }
     }
 
     @Override
