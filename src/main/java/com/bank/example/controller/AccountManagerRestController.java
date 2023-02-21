@@ -88,8 +88,10 @@ public class AccountManagerRestController {
 
     @DeleteMapping("/{accountId}")
     public ResponseEntity<Void> deleteAccountById(@PathVariable Long accountId) {
+        AssertSqlCount.reset();
         Account account = accountService.getByKey(accountId);
         accountService.remove(account);
+        System.out.println(QueryCountInfoHolder.getReport());
         return ResponseEntity.ok().build();
     }
 }

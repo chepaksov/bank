@@ -29,7 +29,7 @@ public class Department {
 
     @OneToMany(
             mappedBy = "department",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.DETACH}
+            cascade = {CascadeType.ALL}
     )
     private List<Manager> managers = new ArrayList<>();
 

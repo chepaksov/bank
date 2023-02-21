@@ -5,8 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 @Entity
@@ -29,10 +29,10 @@ public class CashBackCompany {
     private Manager editor;
 
     @ManyToMany(mappedBy = "cashBackCompanies")
-    private List<Account> accounts = new ArrayList<>();
+    private Set<Account> accounts = new HashSet<>();
 
     @ManyToMany
-    private List<CashBackCategory> cashBackCategories = new ArrayList<>();
+    private Set<CashBackCategory> cashBackCategories = new HashSet<>();
 
     public void addAccount(Account account) {
         accounts.add(account);

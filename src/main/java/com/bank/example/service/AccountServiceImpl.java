@@ -6,6 +6,7 @@ import com.bank.example.dto.AccountSumDto;
 import com.bank.example.model.Account;
 import com.bank.example.model.CashBackCategory;
 import com.bank.example.model.CashBackCompany;
+import com.bank.example.model.DocumentScans;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +47,10 @@ public class AccountServiceImpl extends AbstractService<Long, Account> implement
         for (CashBackCompany company : cashBackCompanies) {
             company.removeAccount(account);
         }
+
+      //  super.remove(new DocumentScans(account.getId()));
+
+        //super.remove();
 
         super.remove(account);
     }

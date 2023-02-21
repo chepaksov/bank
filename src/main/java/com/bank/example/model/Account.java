@@ -8,9 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Getter
@@ -33,13 +31,26 @@ public class Account {
     private Tariff tariff;
 
     @ManyToMany
-    private List<CashBackCategory> cashBackCategories = new ArrayList<>();
+    @JoinTable(name = "account_on_cash_back_categories",
+            joinColumns = {@JoinColumn(name = "account_id")}, inverseJoinColumns = {@JoinColumn(name = "cash_back_category_id")})
+    private Set<CashBackCategory> cashBackCategories = new HashSet<>();
 
     @ManyToMany
-    private List<CashBackCompany> cashBackCompanies = new ArrayList<>();
+    @JoinTable(name = "account_on_cash_back_companies",
+            joinColumns = {@JoinColumn(name = "account_id")}, inverseJoinColumns = {@JoinColumn(name = "cash_back_company_id")})
+    private Set<CashBackCompany> cashBackCompanies = new HashSet<>();
 
-    @OneToMany(mappedBy = "account", orphanRemoval = true, cascade=CascadeType.ALL)
-    private List<Deposit> deposits = new ArrayList<>();
+    @OneToMany(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<Deposit> deposits = new HashSet<>();
+
+    @OneToMany(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<Card> cards = new HashSet<>();
+
+    @OneToOne(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
+    private CloseRequest closeRequest;
+
+    @OneToOne(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
+    private DocumentScans documentScans;
 
     public Account() {
     }
@@ -55,7 +66,7 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public List<Deposit> getDeposits() {
+    public Set<Deposit> getDeposits() {
         return deposits;
     }
 
