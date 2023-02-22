@@ -2,6 +2,7 @@ package com.bank.example.model;
 
 import com.bank.example.dto.DocumentScansDto;
 import com.bank.example.dto.SettingsDto;
+import com.bank.example.model.operation.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,11 +47,20 @@ public class Account {
     @OneToMany(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<Card> cards = new HashSet<>();
 
+    @OneToMany(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<Transaction> transactions = new HashSet<>();
+
     @OneToOne(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
     private CloseRequest closeRequest;
 
     @OneToOne(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
     private DocumentScans documentScans;
+
+    @OneToOne(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Settings settings;
+
+    @OneToMany(mappedBy = "account", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<OperatorRating> operatorRatings = new HashSet<>();
 
     public Account() {
     }

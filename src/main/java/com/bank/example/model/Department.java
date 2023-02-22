@@ -1,5 +1,6 @@
 package com.bank.example.model;
 
+import com.bank.example.listener.DepartmentListener;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
+@EntityListeners(DepartmentListener.class)
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "department_generator")
