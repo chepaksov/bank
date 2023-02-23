@@ -33,8 +33,11 @@ public class CashBackCategoryManagerController {
 
     @DeleteMapping("/{categoryId}")
     public ResponseEntity<Void> deleteDeposit(@PathVariable Long categoryId) {
+        AssertSqlCount.reset();
         CashBackCategory category = cashBackCategoryService.getByKey(categoryId);
         cashBackCategoryService.remove(category);
+        String report = QueryCountInfoHolder.getReport();
+        System.out.println(report);
         return ResponseEntity.ok().build();
     }
 }

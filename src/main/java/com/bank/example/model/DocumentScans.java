@@ -1,12 +1,10 @@
 package com.bank.example.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.bank.example.listener.DocumentScansListener;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -14,6 +12,8 @@ import java.util.Objects;
 @Setter
 @Builder
 @AllArgsConstructor
+@EntityListeners(DocumentScansListener.class)
+@ToString
 public class DocumentScans {
 
     @Id
@@ -21,6 +21,7 @@ public class DocumentScans {
 //    @SequenceGenerator(sequenceName = "documentScans_sequence", name = "documentScans_generator", allocationSize = 10)
     private Long id;
 
+    @NotNull
     private String passport;
 
     private String ITN;
