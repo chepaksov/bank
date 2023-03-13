@@ -20,24 +20,18 @@ public class CashBackCategoryServiceImpl extends AbstractService<Long, CashBackC
         super(cashBackCategoryDao);
         this.cashBackCategoryDao = cashBackCategoryDao;
     }
-//синхрон удаления у главной сущности
+
+    //синхрон удаления у главной сущности
     @Override
     public void removeLinksAccount(CashBackCategory entity) {
-
-
-
-
         Set<Account> accountSet = new HashSet<>(entity.getAccounts());
-
         for (Account account : accountSet) {
             entity.removeAccount(account);
         }
-
     }
 
     @Override
     public void removeLinksCompany(CashBackCategory entity) {
-
 
         Set<CashBackCompany> cashBackCompanyHashSet = new HashSet<>(entity.getCashBackCompanies());
 

@@ -1,6 +1,5 @@
 package com.bank.example.converter;
 
-import com.bank.example.dto.AtmTransactionDto;
 import com.bank.example.dto.CashBackCategoryDetailedDto;
 import com.bank.example.dto.CashBackCompanyDetailedDto;
 import com.bank.example.dto.DepartmentDto;
@@ -10,11 +9,8 @@ import com.bank.example.model.CashBackCategory;
 import com.bank.example.model.CashBackCompany;
 import com.bank.example.model.Department;
 import com.bank.example.model.Manager;
-import com.bank.example.model.operation.AtmTransaction;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class CashBackCategoryDetailedConverter {
 
